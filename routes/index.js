@@ -9,13 +9,14 @@ require('dotenv').config();
 
 console.log('process.env.MONGODB_CONNECT_URI....',process.env.MONGODB_CONNECT_URI);
 console.log('process.env.PORT.....',process.env.PORT)
-mongoose.connect(`${process.env.MONGODB_CONNECT_URI}:${process.env.PORT}/MAPDATA`, {
+mongoose.connect(`${process.env.MONGODB_CONNECT_URI}/MAPDATA`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
 router.get('/', function(req, res, next) {
+  console.log('inisde....')
   res.render('index', { title: 'Express' });
 });
 
