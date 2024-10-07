@@ -5,18 +5,16 @@ const path = require('path');
 const fs = require('fs');
 const mongoose = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
-require('dotenv').config();
 
 console.log('process.env.MONGODB_CONNECT_URI....',process.env.MONGODB_CONNECT_URI);
-console.log('process.env.PORT.....',process.env.PORT)
-mongoose.connect(`${process.env.MONGODB_CONNECT_URI}/MAPDATA`, {
+console
+mongoose.connect(`${process.env.MONGODB_CONNECT_URI}:${process.env.PORT}/MAPDATA`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
 router.get('/', function(req, res, next) {
-  console.log('inisde....')
   res.render('index', { title: 'Express' });
 });
 
